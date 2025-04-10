@@ -1,0 +1,160 @@
+
+:root {
+    /* main colors  */
+    --primary-color: #FF0000;
+    --text-parahraph: #333;
+    --accents: #0000FF;
+    --logo-color: var(--primary-color);
+    --secondary-color: #00FF00;
+    --background-color: #eeeeeed4;
+
+    /* Typography */ 
+    --header-font-family: "Eagle Lake", cursive;
+    --text-font-family: "Roboto", sans-serif;
+}
+*, html, body {
+    padding: rem;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: var(--background-color);
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--text-parahraph);
+}
+
+.header a {
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 2.25rem;
+    font-family: var(--header-font-family);
+    color: var(--logo-color);
+}
+
+.menu {
+    font-family: var(--header-font-family);
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    font-size: 1.2rem;
+}
+
+.menu a, .phone_number {
+    color: var(--text-parahraph);
+}
+
+.phone {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.phone_number {
+    font-family: var(--header-font-family);
+}
+
+.menu li a, .phone p a {
+    position: relative;
+}
+
+.menu li a::before, .phone p a::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 0;
+    height: .3rem;
+    background-color: var(--primary-color);
+    margin-top: 5px;
+    transition: width 0.3s ease-in-out;
+}
+
+.menu li a:hover::before, .phone p a:hover::before {
+    width: 70%;
+    opacity: .8;
+}
+
+.main {
+    height: 92vh;
+    position: relative;
+}
+
+.scroll_btn_form {
+    position: absolute;
+    top: 38%;
+    right: 10%;
+}
+
+[type="radio"] {
+    opacity: 0;
+}
+
+[type="radio"] + label {
+    position: relative;
+    padding-left: 20px;
+    margin: 15px;
+    cursor: pointer;
+    display: block;
+    color: red;
+}
+
+[type="radio"] + label::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    background-color: #333;
+    border: 2px dashed #aaa;
+}
+
+/* [type="radio"]:checked + label::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background-color: #eee;
+} */
+
+[type="radio"]:checked + label::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    
+    border-radius: 100%;
+    background-color: #eee;
+    z-index: 1;
+}
+
+
+/* 
+input[type="radio"] {
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.scroll_btn_form div label::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    background-color: #0000FF;
+}
+
+label {
+    margin: 10px;
+} */
