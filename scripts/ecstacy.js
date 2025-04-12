@@ -414,28 +414,34 @@ const sixthFirstPage = () => {
 
     [
         {
-            svg: './image/dummy.png',
+            svg: './images/facebook-svgrepo-com.svg',
             alt: 'facebook_icon'
         },
         {
-            svg: './image/dummy.png',
+            svg: './images/twitter-svgrepo-com.svg',
             alt: 'twitter_icon'
         },
         {
-            svg: './image/dummy.png',
+            svg: './images/instagram-svgrepo-com.svg',
             alt: 'instagram_icon'
         }
     ].forEach(icon => {
         const div3 = document.createElement('div');
         div3.classList.add('social_icon');
 
+        // link for image
+        const a = document.createElement('a');
+        a.setAttribute('href', '#')
+        a.classList.add('social_icon_link')
+
         const img = document.createElement('img');
         img.classList.add('icon')
 
-        img.setAttribute('src', `${icon.svg}`)
+        img.setAttribute('src', icon.svg)
         img.setAttribute('alt', `${icon.alt}`);
 
-        div3.appendChild(img);
+        a.appendChild(img);
+        div3.appendChild(a);
         social_icons.appendChild(div3);
     });
 
@@ -445,6 +451,7 @@ const sixthFirstPage = () => {
     main.appendChild(div_container);
 
 }
+
 
 const pages = {
     "first_page": homeFirstPage,
@@ -456,7 +463,7 @@ const pages = {
 }
 
 const page_view = document.querySelectorAll('input[type="radio"]')
-sixthFirstPage();
+homeFirstPage();
 page_view.forEach(page => {
 
     page.addEventListener('click', () => {

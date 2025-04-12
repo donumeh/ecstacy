@@ -555,3 +555,13 @@
 .address_header {
     font-size: 3rem;
 }
+
+.social_icon {
+    width: 100px;
+    height: 100px;
+}
+
+.social_icon img {
+    width: 100px;
+    height: 100px;
+}
