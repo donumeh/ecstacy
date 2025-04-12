@@ -527,3 +527,31 @@
 .fifth_page_image:hover {
     transform: scale(1.1);
 }
+
+.footer_div_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: rgb(128, 74, 74);
+    color: #fff;
+}
+
+.footer_header_text {
+    font-size: 4.5rem;
+    width: 20rem;
+    height: 29rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.address_container {
+    width: 6rem;
+}
+
+.address_header {
+    font-size: 3rem;
+}

@@ -380,7 +380,7 @@ const sixthFirstPage = () => {
 
     // Address container
     const div1 = document.createElement('div');
-
+    div1.classList.add('address_container')
 
     // Address header
     const h3 = document.createElement('h3');
