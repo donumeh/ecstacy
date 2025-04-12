@@ -286,6 +286,7 @@ const fourthFirstPage = () => {
 
         // Service explanation
         const text = document.createElement('p');
+        text.classList.add('fourth_page_service_text');
         text.innerHTML = service.text;
 
         // Appending the service text in s_service
@@ -298,30 +299,60 @@ const fourthFirstPage = () => {
 }
 
 const fifthFirstPage = () => {
+    // main client view
     const main = document.querySelector('#client_view');
-    const div_container = document.createElement('div');
-    const h3 = document.createElement('h2');
-    const button = document.createElement('p');
-    const img = document.createElement('img');
-
 
     // Clear the current main
     main.innerHTML = "";
 
-    h3.setAttribute('class', 'fifth_page_header_text')
-    // button.setAttribute('')
+    // Division container
+    const div_container = document.createElement('div');
+    div_container.classList.add('fifth_page_container');
+
+    // page_header container
+    const page_header = document.createElement('div');
+    page_header.classList.add('page_header_container');
+
+    // fifth page header
+    const h3 = document.createElement('h3');
+    h3.classList.add('fifth_page_header');
 
     h3.innerHTML = `Join our <span>Community</span>`;
+
+    page_header.appendChild(h3);
+
+    // Button and link
+    const button = document.createElement('p');
+    const a = document.createElement('a');
+
+    a.classList.add('fifth_page_link');
     button.textContent = "Join our Discord Community";
+    button.classList.add('fifth_page_button');
+
+    //  Appending the button to page
+    button.appendChild(a);
+    page_header.appendChild(button);
+
+    // Image container
+    const image_container = document.createElement('div');
+    image_container.classList.add('fifth_page_image_container');
+
+    // Image creation
+    const img = document.createElement('img');
 
     img.setAttribute('src', './images/dummy.png');
     img.setAttribute('alt', 'Image of a person joining the discord community');
 
-    div_container.setAttribute('class', 'fifth_page');
-    div_container.appendChild(h3);
-    div_container.appendChild(button);
+    // fifth page Backdrop
+    const backdrop = document.createElement('div');
+    backdrop.classList.add('fifth_page_backdrop');
 
-    div_container.appendChild(img);
+    image_container.appendChild(img);
+    image_container.appendChild(backdrop);
+
+
+    div_container.appendChild(page_header);
+    div_container.appendChild(image_container);
 
     main.appendChild(div_container);
 }
@@ -378,7 +409,7 @@ const pages = {
 }
 
 const page_view = document.querySelectorAll('input[type="radio"]')
-fourthFirstPage();
+fifthFirstPage();
 page_view.forEach(page => {
 
     page.addEventListener('click', () => {
