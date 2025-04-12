@@ -522,4 +522,9 @@
 .fifth_page_image {
     width: 29rem;
     height: 30rem;
+    transition: transform 0.3s ease;
+}
+
+.fifth_page_image:hover {
+    transform: scale(1.1);
 }
