@@ -360,44 +360,89 @@ const fifthFirstPage = () => {
 }
 
 const sixthFirstPage = () => {
+    // The main client view
     const main = document.querySelector('#client_view');
-    const div_container = document.createElement('div');
-    const h2 = document.createElement('h2');
-
-    const div1 = document.createElement('div');
-    const div2 = document.createElement('div');
-    const div3 = document.createElement('div');
-
-
-    const h3 = document.createElement('h3');
-    const text = document.createElement('p');
-
-    const follow_us = document.createElement('h3');
-
-
-    div_container.setAttribute('class', 'footer');
 
     // Clear the current main
     main.innerHTML = "";
 
+    // Division container fot footer
+    const div_container = document.createElement('div');
+    div_container.classList.add('footer_div_container')
+
+    // Site footer header
+    const h2 = document.createElement('h2');
+    h2.classList.add('footer_header_text');
     h2.textContent = `A community for the outdoorsy`;
-    div1.appendChild(h2);
+
+    // Inserting header into div_container for footer
+    div_container.appendChild(h2);
+
+    // Address container
+    const div1 = document.createElement('div');
 
 
+    // Address header
+    const h3 = document.createElement('h3');
+    h3.classList.add('address_header');
     h3.textContent = `Address`;
+
+    div1.appendChild(h3);
+
+    // Address location
+    const text = document.createElement('p');
+    text.classList.add('address_location');
     text.textContent = `1883 Old Highway 20 McDade Texas, United States`;
 
+    div1.appendChild(text)
 
+    // Insertion of address div1
+    div_container.appendChild(div1);
+
+    // Social Media Div
+    const div2 = document.createElement('div');
+
+    // Follow us header
+    const follow_us = document.createElement('h3');
+    follow_us.classList.add('follow_us_header');
     follow_us.textContent = `Follow Us`;
 
+    div2.appendChild(follow_us);
 
-    div2.appendChild(h3);
-    div2.appendChild(text);
-    div3.appendChild(follow_us);
+    const social_icons = document.createElement('div');
+    social_icons.classList.add('social_icon_list');
 
-    main.appendChild(div1);
-    main.appendChild(div2);
-    main.appendChild(div3);
+    [
+        {
+            svg: './image/dummy.png',
+            alt: 'facebook_icon'
+        },
+        {
+            svg: './image/dummy.png',
+            alt: 'twitter_icon'
+        },
+        {
+            svg: './image/dummy.png',
+            alt: 'instagram_icon'
+        }
+    ].forEach(icon => {
+        const div3 = document.createElement('div');
+        div3.classList.add('social_icon');
+
+        const img = document.createElement('img');
+        img.classList.add('icon')
+
+        img.setAttribute('src', `${icon.svg}`)
+        img.setAttribute('alt', `${icon.alt}`);
+
+        div3.appendChild(img);
+        social_icons.appendChild(div3);
+    });
+
+    div2.appendChild(social_icons);
+    div_container.appendChild(div2);
+
+    main.appendChild(div_container);
 
 }
 
@@ -411,7 +456,7 @@ const pages = {
 }
 
 const page_view = document.querySelectorAll('input[type="radio"]')
-homeFirstPage();
+sixthFirstPage();
 page_view.forEach(page => {
 
     page.addEventListener('click', () => {
