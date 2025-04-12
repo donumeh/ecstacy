@@ -1,17 +1,17 @@
 const testimonies = [
     {
         name: "Mike",
-        profile: "./images/dummy.png",
+        profile: "./images/mike.webp",
         testimony: "This site is a game-changer! Found three hidden trails near me I never knew exists...",
     },
     {
         name: "Josephine",
-        profile: "./images/dummy.png",
+        profile: "./images/josephine.webp",
         testimony: "As a busy parent, I love how the event calendar includes family-friendly options...",
     },
     {
         name: "Bayo",
-        profile: "./images/dummy.png",
+        profile: "./images/bayo.webp",
         testimony: "More than just trails —this site connects people! Joined a cleanup day and met folks who cleanup day and met folks who care about pre...",
     }
 ]
@@ -19,17 +19,17 @@ const testimonies = [
 const services = [
     {
         header: "Find <span>Routes</span>",
-        image: "./images/dummy.png",
+        image: "./images/routes.webp",
         text: "Discover <span>hiking and biking trails</span> tailored to your skill level",
     },
     {
         header: "Join a <span>community</span>",
-        image: "./images/dummy.png",
+        image: "./images/community.webp",
         text: "<span>Connect with fellow outdoor enthusiats</span> and share adventures",
     },
     {
         header: "Join <span>Events</span>",
-        image: "./images/dummy.png",
+        image: "./images/adventure_image.webp",
         text: "From <span>guided hikes to eco-cleanups</span>, never miss a chance to explore",
     }
 ]
@@ -49,8 +49,6 @@ const homeFirstPage = () => {
     // Single component for header container
     const header_container = document.createElement('div');
     header_container.classList.add('header_container');
-
-
 
     const page_header = document.createElement("h1");
     const page_description = document.createElement('p');
@@ -151,76 +149,151 @@ const secondFirstPage = () => {
 }
 
 const thirdFirstPage = () => {
+    // main client view
+
     const main = document.querySelector('#client_view');
-    const page_header = document.createElement("h2");
-    const div_container = document.createElement('div');
+
+    // third page container
+    const third_page_container = document.createElement('div');
+    third_page_container.classList.add('third_page_container');
 
     // Clear the current main
     main.innerHTML = "";
 
-    page_header.setAttribute('class', 'third_page_header_text');
-    page_header.innerHTML = `Read <span>Exciting Stories</span>`;
+    const page_header = document.createElement("h2");
 
-    div_container.setAttribute("class", "testimonies_container");
+    // Testimonial headers
+    const div_container = document.createElement('div');
+
+    // Page Header Title
+    page_header.classList.add('third_page_header_text');
+    page_header.innerHTML = `Read <span class="third_page_highlighted_text">Exciting Stories</span>`;
+
+    div_container.classList.add("testimonies_container");
 
     testimonies.forEach(testimony => {
+        // main div
         const div = document.createElement('div');
+
+        // Name of person
         const h3 = document.createElement('h3');
+
+        // image of person
         const img = document.createElement('img');
+
+        // Snippet of text from person
         const text = document.createElement('p');
 
+        // Greeny back drop for person profile
+        const green_testimonial_background = document.createElement('div');
 
-        h3.setAttribute('class', 'testimony_header');
-        h3.innerHTML = `Meet ${testimony.name}`;
+        // Image wrapper
+        const image_container = document.createElement('div');
+
+        // Background drop
+        green_testimonial_background.classList.add('testimonial_backdrop');
+
+        h3.classList.add('testimony_header');
+        h3.innerHTML = `Meet <span>${testimony.name}</span>`;
 
         img.setAttribute('alt', `Profile image of ${testimony.name}`);
-        img.setAttribute('class', 'testimony_profile_image');
-        text.innerHTML = `${testimony.testimony}<a href="#" class="testimony_read_more">read more</a>`;
+        img.setAttribute('loading', 'lazy');
+        img.setAttribute('src', `${testimony.profile}`);
+        img.classList.add('testimony_profile_image');
 
-        div.setAttribute("class", "testimonies");
+        image_container.classList.add('third_page_image_container');
+        image_container.appendChild(img);
+        image_container.appendChild(green_testimonial_background);
+
+        text.classList.add('testimony_text')
+        text.innerHTML = `${testimony.testimony}<a href="#">read more</a>`;
+
+        div.classList.add("testimony");
         div.appendChild(h3);
-        div.appendChild(img)
+        div.appendChild(image_container);
         div.appendChild(text);
         div_container.appendChild(div);
     })
 
-    main.appendChild(page_header);
-    main.appendChild(div_container);
+    third_page_container.appendChild(page_header);
+    third_page_container.appendChild(div_container);
+
+    main.appendChild(third_page_container);
 }
 
 const fourthFirstPage = () => {
+    // main client view
     const main = document.querySelector('#client_view');
-    const page_header = document.createElement('h2');
-    const div_container = document.createElement('div');
 
     // Clear the current main
     main.innerHTML = "";
 
-    page_header.setAttribute('class', 'fourth_page_header_text');
+    // page container
+    const div_container = document.createElement('div');
+    div_container.classList.add('div_container');
+
+    // page header
+    const page_header = document.createElement('h2');
+    page_header.classList.add('fourth_page_header_text');
     page_header.textContent = "Services";
 
+    div_container.appendChild(page_header);
+
+    // Backdrops
+    const backdrop1 = document.createElement('div')
+    const backdrop2 = document.createElement('div')
+
+    //  Backddrop addition to container
+    backdrop1.classList.add('backdrop1');
+    backdrop1.classList.add('fourth_page_backdrop');
+    backdrop2.classList.add('backdrop2');
+    backdrop2.classList.add('fourth_page_backdrop');
+
+    // Backdrop addition to div_container
+    div_container.appendChild(backdrop1);
+    div_container.appendChild(backdrop2);
+
+    // services container
+    const services_container = document.createElement('div');
+    services_container.classList.add('services_container');
+
     services.forEach(service => {
-        const div = document.createElement('div');
-        const h3 = document.createElement('h3');
+        // For each service
+        const s_service = document.createElement('div');
+        s_service.classList.add('service');
+
+
+        // service header
+        const service_header = document.createElement('h3');
+        service_header.classList.add('service_header');
+        service_header.innerHTML = service.header;
+
+        // Adding the service header 
+        s_service.appendChild(service_header);
+
+        // service image
         const img = document.createElement('img');
-        const text = document.createElement('p');
-
-        h3.innerHTML = `${service.header}`;
-
         const startIndex = service.header.indexOf('>') + 1;
         const endIndex = service.header.indexOf('<', startIndex); // Look for '<' after '>'
+
         img.setAttribute('alt', `Image for ${service.header.slice(startIndex, endIndex)}`);
-        img.setAttribute('class', 'services_image');
+        img.setAttribute('loading', 'lazy');
+        img.setAttribute('src', `${service.image}`);
+        img.classList.add('service_image');
 
-        text.innerHTML = `${service.text}`;
+        // Adding the service image
+        s_service.appendChild(img);
 
-        div.setAttribute('class', "service_div");
-        div.appendChild(h3);
-        div.appendChild(img);
-        div.appendChild(text);
-        div_container.appendChild(div);
+        // Service explanation
+        const text = document.createElement('p');
+        text.innerHTML = service.text;
+
+        // Appending the service text in s_service
+        s_service.appendChild(text);
+        services_container.appendChild(s_service);
     })
 
+    div_container.appendChild(services_container);
     main.appendChild(div_container);
 }
 
@@ -305,7 +378,7 @@ const pages = {
 }
 
 const page_view = document.querySelectorAll('input[type="radio"]')
-secondFirstPage();
+fourthFirstPage();
 page_view.forEach(page => {
 
     page.addEventListener('click', () => {
