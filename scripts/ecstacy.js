@@ -230,7 +230,7 @@ const fourthFirstPage = () => {
 
     // page container
     const div_container = document.createElement('div');
-    div_container.classList.add('div_container');
+    div_container.classList.add('fourth_page_div_container');
 
     // page header
     const page_header = document.createElement('h2');
@@ -260,7 +260,7 @@ const fourthFirstPage = () => {
     services.forEach(service => {
         // For each service
         const s_service = document.createElement('div');
-        s_service.classList.add('service');
+        s_service.classList.add('services');
 
 
         // service header

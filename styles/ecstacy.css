@@ -387,3 +387,62 @@
     height: 6.69rem;
     font-weight: bold;
 }
+
+.fourth_page_div_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: rem;
+    position: relative;
+    height: 80vh;
+}
+
+.fourth_page_header_text {
+    font-family: var(--text-font-family);
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.fourth_page_backdrop {
+    background-color: var(--secondary-color);
+    width: 25.25rem;
+    height: 26.88rem;
+    border-radius: 13.19rem;
+    position: absolute;
+    opacity: 30%;
+    z-index: -2;
+    top: 30%;
+}
+
+.backdrop1 {
+    left: 20%;
+}
+
+.backdrop2 {
+    right: 20%;
+}
+
+.services_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.services {
+    width: 22.25rem;
+    height: 24.88rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.service_image {
+    width: 100%;
+    height: 100%;
+}
