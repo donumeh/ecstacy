@@ -66,7 +66,7 @@ const homeFirstPage = () => {
     page_header.innerHTML = "Discover <span class='highlighted_text'>Hidden Trails</span> & <span class='highlighted_text'>Outdoor Adventures</span> Near You";
 
     page_description.classList.add('first_page_desscription')
-    page_description.textContent = 'Your gateway to hiking, biking, and cummunity events —right outside your door'
+    page_description.textContent = 'Your gateway to hiking, biking, and cummunity events —right outside your door!'
 
     button.classList.add('button_first_page');
     link.setAttribute('href', '#');
@@ -326,7 +326,8 @@ const fifthFirstPage = () => {
     const a = document.createElement('a');
 
     a.classList.add('fifth_page_link');
-    button.textContent = "Join our Discord Community";
+    a.setAttribute('href', "#")
+    a.textContent = "Join our Discord Community";
     button.classList.add('fifth_page_button');
 
     //  Appending the button to page
@@ -340,8 +341,9 @@ const fifthFirstPage = () => {
     // Image creation
     const img = document.createElement('img');
 
-    img.setAttribute('src', './images/dummy.png');
+    img.setAttribute('src', './images/a_person_using_their_smartphone.webp');
     img.setAttribute('alt', 'Image of a person joining the discord community');
+    img.classList.add('fifth_page_image');
 
     // fifth page Backdrop
     const backdrop = document.createElement('div');
@@ -409,7 +411,7 @@ const pages = {
 }
 
 const page_view = document.querySelectorAll('input[type="radio"]')
-fifthFirstPage();
+homeFirstPage();
 page_view.forEach(page => {
 
     page.addEventListener('click', () => {
