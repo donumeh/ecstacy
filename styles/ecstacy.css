@@ -7,18 +7,23 @@
     --logo-color: var(--primary-color);
     --secondary-color: #00FF00;
     --background-color: #eeeeeed4;
+    --header-color: #555454
 
     /* Typography */ 
     --header-font-family: "Eagle Lake", cursive;
     --text-font-family: "Roboto", sans-serif;
 }
+
 *, html, body {
     padding: rem;
     margin: 0;
     box-sizing: border-box;
-    /* background-color: var(--background-color); */
     max-width: 1500px;
     margin: 0 auto;
+}
+
+.client_background {
+    background-color: var(--background-color);
 }
 
 .header {
@@ -46,7 +51,7 @@
     display: flex;
     flex-direction: row;
     gap: 4rem;
-    font-size: 1.2rem;
+    font-size: 2rem;
 }
 
 .menu a, .phone_number {
@@ -63,6 +68,8 @@
 
 .phone_number {
     font-family: var(--header-font-family);
+    font-size: 2rem;
+
 }
 
 .menu li a, .phone p a {
@@ -138,6 +145,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .first_page_image {
@@ -151,7 +159,9 @@
     margin-right: auto;
     width: 890px;
     height: 800px;
-    position: relative;
+    position: absolute;
+    right: 0;
+    top: 20%;
 }
 
 .green_background_first_page {
@@ -170,11 +180,126 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    position: absolute;
+    left: 0;
+    top: 10%;
+    width: 890px;
+    height: 700px;
 }
 
 .first_page_header_text {
     font-family: "Inter", sans-serif;
     font-weight: bold;
-    font-size: 2.5rem;
+    width: 738px;
+    height: 363px;
+    font-size: 5rem;
+    color: var(--header-color);
+}
+
+.highlighted_text, .second_page_highlighted_text {
+    color: var(--primary-color);
+    display: block;
+}
+
+.first_page_desscription {
+    font-size: 2rem;
+    text-align: center;
+    width: 500px;
+    font-style: italic;
+    margin-left: 3rem;
+}
+
+.button_first_page {
+    position: relative;
+    top: 15rem;
+    left: 1rem;
+    background-color: var(--primary-color);
+    border: 1px dotted grey;
+    padding: .8rem;
+    border-radius: 3rem;
+    width: 10rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button_first_page a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-family: "Inter", sans-serif;
+    font-weight: bolder;
+    cursor: pointer;
+    color: #fff;
+}
+
+.button_first_page:hover, .button_first_page a:hover {
+    opacity: 70%;
+}
+
+.second_page_div_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.second_page_image_container {
+    position: relative;
+    width: 897px;
+    height: 795px;
+}
+
+.second_page_image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.green_background_second_page {
+    width: 897px;
+    height: 795px;
+    background-color: var(--secondary-color);
+    position: absolute;
+    opacity: 26%;
+    top: 70px;
+    z-index: -3;
+    border-radius: 24.875rem;
+}
+
+.second_page_header_container {
+    position: relative;
+    width: 25.75rem;
+    height: 28.25rem;
+}
+
+.second_page_header_text {
+    font-size: 3rem;
+}
+
+.second_page_highlighted_text {
+    text-align: center;
+    font-size: 4.5rem;
+}
+
+.second_page_button_wrapper {
+    background-color: var(--primary-color);
+    border-radius: 3rem;
+    padding: 1rem;
+    position: absolute;
+    bottom: -30px;
+    text-align: center;
+    width: 20rem;
+}
+
+.second_page_button_link {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-family: "Inter", sans-serif;
+    font-weight: bolder;
+    cursor: pointer;
+    color: #fff;
+}
+
+.second_page_button_wrapper:hover, .second_page_button_link:hover {
+    opacity: 70%;
 }

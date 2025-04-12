@@ -55,6 +55,7 @@ const homeFirstPage = () => {
     const page_header = document.createElement("h1");
     const page_description = document.createElement('p');
     const button = document.createElement('p');
+    const link = document.createElement('a');
 
     // second component
     const image_container = document.createElement('div');
@@ -64,22 +65,27 @@ const homeFirstPage = () => {
     main.innerHTML = "";
 
     page_header.classList.add('first_page_header_text');
-    page_header.innerHTML = 'Discover <span>Hidden Trails & Outdoor Adventures</span> Near You';
+    page_header.innerHTML = "Discover <span class='highlighted_text'>Hidden Trails</span> & <span class='highlighted_text'>Outdoor Adventures</span> Near You";
 
     page_description.classList.add('first_page_desscription')
     page_description.textContent = 'Your gateway to hiking, biking, and cummunity events —right outside your door'
-    button.textContent = 'DISCOVER';
+
+    button.classList.add('button_first_page');
+    link.setAttribute('href', '#');
+    link.textContent = 'DISCOVER';
 
     page_image.setAttribute('src', './images/medium-shot-smiley-man-bicycle.webp');
     page_image.setAttribute('alt', 'an image of a young man on a bike hiking');
+    page_image.setAttribute('loading', 'lazy');
     page_image.classList.add('first_page_image')
 
     image_container.classList.add('image_container');
     image_container.appendChild(page_image);
     image_container.appendChild(greenish_image_background);
 
-    header_container.appendChild(page_header);
     header_container.appendChild(page_description);
+    header_container.appendChild(page_header);
+    button.appendChild(link);
     header_container.appendChild(button);
 
     first_page_container.appendChild(header_container);
@@ -89,27 +95,59 @@ const homeFirstPage = () => {
 }
 
 const secondFirstPage = () => {
+    // main 
     const main = document.querySelector('#client_view');
-    const page_image = document.createElement('img');
-    const page_header = document.createElement("h1");
-    const button = document.createElement('p');
 
     // Clear the current main
     main.innerHTML = "";
 
+    // div container
+    const div_container = document.createElement('div');
+    div_container.classList.add('second_page_div_container');
 
-    page_image.setAttribute('src', './images/dummy.png');
+    // image container
+    const image_container = document.createElement("second_page_image_container");
+    image_container.classList.add('second_page_image_container');
+
+    const page_image = document.createElement('img');
+
+    page_image.classList.add('second_page_image');
+    page_image.setAttribute('src', './images/adventure_image.webp');
     page_image.setAttribute('alt', 'an image of people having an adventurous moment');
-
-    page_header.setAttribute('class', 'second_page_header_text');
-    page_header.innerHTML = `Join the Adventure:<span>Upcoming Outdoor Events & Community Gatherings</span>`;
+    page_image.setAttribute('loading', 'lazy');
 
 
-    button.textContent = `Join The Adventure`;
+    const greenish_image_background = document.createElement('div');
+    greenish_image_background.classList.add('green_background_second_page');
 
-    main.appendChild(page_header);
-    main.appendChild(page_image);
-    main.appendChild(button);
+    image_container.appendChild(page_image)
+    image_container.appendChild(greenish_image_background);
+
+    // page header container
+    const second_page_header_container = document.createElement('div');
+    second_page_header_container.classList.add('second_page_header_container');
+
+    const page_header = document.createElement("h1");
+    const button = document.createElement('p');
+    const link = document.createElement('a');
+
+    page_header.classList.add('second_page_header_text');
+    page_header.innerHTML = `<span class="second_page_highlighted_text">Join the Adventure:</span>Upcoming Outdoor Events & Community Gatherings`;
+
+    link.textContent = `Join The Adventure`;
+    link.setAttribute('href', '#');
+    link.classList.add('second_page_button_link')
+    button.appendChild(link);
+
+    button.classList.add('second_page_button_wrapper');
+
+    second_page_header_container.appendChild(page_header);
+    second_page_header_container.appendChild(button);
+
+    div_container.appendChild(image_container);
+    div_container.appendChild(second_page_header_container);
+
+    main.appendChild(div_container);
 }
 
 const thirdFirstPage = () => {
@@ -267,10 +305,92 @@ const pages = {
 }
 
 const page_view = document.querySelectorAll('input[type="radio"]')
-homeFirstPage();
+secondFirstPage();
 page_view.forEach(page => {
 
     page.addEventListener('click', () => {
         pages[page.value]();
     })
 })
+
+let scrollLocked = false;
+
+const selectSlide = (event) => {
+    if (scrollLocked) {
+        return;
+    }
+
+    scrollLocked = true;
+    setTimeout(() => {
+        scrollLocked = false;
+    }, 500);
+
+    const values = Object.keys(pages);
+    const currentSlide = document.querySelector("input[type='radio']:checked");
+
+    if (!currentSlide) return;
+
+    let location = values.indexOf(currentSlide.value);
+
+    if (event === "up") {
+        location = Math.max(0, location - 1);
+    } else if (event === "down") {
+        location = Math.min(values.length - 1, location + 1);
+    }
+
+    const newSlide = document.querySelector(`input[value='${values[location]}']`);
+    if (newSlide) {
+        currentSlide.checked = false;
+        newSlide.checked = true;
+        pages[values[location]]();
+    }
+};
+
+const slideInteraction = () => {
+    // Beginning of scroll detector
+
+    let lastTouchY = 0;
+
+    function onTouchStart(event) {
+        lastTouchY = event.touches[0].clientY;
+    }
+
+    function onTouchMove(event) {
+        const currentY = event.touches[0].clientY;
+
+        if (currentY > lastTouchY) {
+            selectSlide('up');
+        } else if (currentY < lastTouchY) {
+            selectSlide('down');
+        }
+        lastTouchY = currentY;
+    }
+
+    // Wheel events (desktop)
+    function onWheel(event) {
+        if (event.deltaY < 0) {
+            selectSlide("up");
+        } else if (event.deltaY > 0) {
+            selectSlide('down');
+        }
+    }
+
+    function onKeyDown(event) {
+        if (event.key === "ArrowUp") {
+            selectSlide('up');
+        } else if (event.key === "ArrowDown") {
+            selectSlide('down');
+        }
+    }
+
+    // Touch events (mobile)
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+
+    window.addEventListener('wheel', onWheel, { passive: true });
+
+    // Arrow key check
+    window.addEventListener('keydown', onKeyDown);
+}
+
+slideInteraction();
